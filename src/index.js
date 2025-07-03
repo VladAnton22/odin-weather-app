@@ -1,4 +1,2 @@
-import { greeting } from "./greeting.js";
+import { Forecast } from "./models/forecast.js"
 import "./styles.css";
-
-console.log(greeting);
