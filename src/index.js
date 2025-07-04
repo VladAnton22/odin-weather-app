@@ -3,5 +3,5 @@ import { getData } from "./services/weatherApi.js"
 import "./styles.css";
 
 document.addEventListener('DOMContentLoaded', () => {
-    // getData();
+    getData();
 })

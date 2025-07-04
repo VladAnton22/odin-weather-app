@@ -11,7 +11,6 @@ export class GeneralForecast {
 
         this.summary = {
             description: day.description,
-            conditions: current.conditions,
             icon: current.icon,
         };
 
