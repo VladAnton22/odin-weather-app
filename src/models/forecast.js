@@ -29,11 +29,11 @@ export class GeneralForecast {
     }
 }
 
-export class futureForecast {
+export class FutureForecast {
     constructor(day) {
         this.date = day.datetime;
         this.icon = day.icon;
-        this.tempMin = day.tempMin;
-        this.tempMax = day.tempMax;
+        this.tempMin = day.tempmin;
+        this.tempMax = day.tempmax;
     }
 }
