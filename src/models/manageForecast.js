@@ -1,8 +1,9 @@
-import { GeneralForecast, FutureForecast } from "./forecast.js"
-
-export let futureForecasts = [];
+import { GeneralForecast, FutureForecast } from "./forecast.js";
+import { formatGeneralDate, formatWeekDay, formatTime } from "../utils/datetimeFormat.js"
 
 export function createGeneralForecast(data) {
+    data.currentConditions.datetime = formatTime(data.currentConditions.datetime);
+    data.days[0].datetime = formatGeneralDate(data.days[0].datetime);
     data.currentConditions.temp = Math.round(data.currentConditions.temp);
     data.currentConditions.feelslike = Math.round(data.currentConditions.feelslike)
     data.days[0].tempmin = Math.round(data.days[0].tempmin);
@@ -14,11 +15,17 @@ export function createGeneralForecast(data) {
 }
 
 export function createFutureForecasts(data) {
-    let i;
-    for (i = 0; i < 5; i++) {
-        data.days[i].tempmin = Math.round(data.days[i].tempmin);
-        data.days[i].tempmax = Math.round(data.days[i].tempmax);
-        const forecast = new FutureForecast(data.days[i]);
-        futureForecasts.push(forecast);
-    }
+  const forecasts = [];
+
+  for (let i = 0; i < 5; i++) {
+    const day = data.days[i];
+    day.datetime = formatWeekDay(day.datetime);
+    day.tempmin = Math.round(day.tempmin);
+    day.tempmax = Math.round(day.tempmax);
+
+    const forecast = new FutureForecast(day);
+    forecasts.push(forecast);
+  }
+
+  return forecasts;
 }

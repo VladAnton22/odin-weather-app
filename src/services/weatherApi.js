@@ -1,11 +1,13 @@
-import { createGeneralForecast, createFutureForecasts, futureForecasts } from "../models/manageForecast.js";
+import { createGeneralForecast, createFutureForecasts } from "../models/manageForecast.js";
 
-export async function getData() {
-    const response = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?key=BXBZLJM5SNLSZF5PXVAFB8ARM", {mode: 'cors'})
-    response.json().then(function(response) {
-        const generalForecast = createGeneralForecast(response);
-        console.log(generalForecast);
-        createFutureForecasts(response);
-        console.log(futureForecasts);
-    })
+export async function getForecastData(city, unitGroup = "metric") {
+  const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${unitGroup}&key=BXBZLJM5SNLSZF5PXVAFB8ARM`, {
+    mode: "cors",
+  });
+
+  const data = await response.json();
+  const generalForecast = createGeneralForecast(data);
+  const futureForecasts = createFutureForecasts(data);
+
+  return { generalForecast, futureForecasts };
 }

@@ -5,8 +5,8 @@ export class GeneralForecast {
 
         this.location = {
             address: data.resolvedAddress,
-            timezone: data.timezone,
-            datetimeEpoch: current.datetimeEpoch,
+            time: current.datetime,
+            date: day.datetime,
         };
 
         this.summary = {
