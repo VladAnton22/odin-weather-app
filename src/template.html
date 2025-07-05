@@ -24,7 +24,7 @@
   </header>
   <main class="mt-10">
     <section class="flex flex-col items-center mb-16">
-      <p class="text-xl font-sans text-center">Search a location to view the weather forecast</p>
+      <p class="text-xl font-sans text-center mb-4">Search a location to view the weather forecast</p>
       <form id="search-form" class="flex gap-2 w-full max-w-md">
         <input type="text" id="location-input" name="location-input" placeholder="Enter a city..."
           class="flex-1 px-4 py-2 rounded-md bg-neutral-dark text-white border border-blue-300 focus:outline-none focus:ring focus:ring-blue-400"
@@ -33,6 +33,7 @@
           Search
         </button>
       </form>
+      <p id="error" class="text-danger text-center mt-2"></p>
     </section>
     <section class="container mx-auto grid grid-rows-2 gap-6 m-5">
       <div class="grid grid-cols-2 gap-6">
